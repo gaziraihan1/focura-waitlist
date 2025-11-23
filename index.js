@@ -4,7 +4,12 @@ const app = express()
 const port = 3000;
 const cors = require("cors");
 const { MongoClient, ServerApiVersion } = require('mongodb');
-app.use(cors())
+app.use(cors({
+  origin: ["http://localhost:5173", "https://focura-waitlist.netlify.app/"],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
+
 app.use(express.json());
 
 app.get('/', (req, res) => {
